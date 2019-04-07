@@ -6,17 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login</title>
+<title>registration</title>
 </head>
 <body>
 
 <%
 String username = request.getParameter("username");
 String password = request.getParameter("password");
-String sql = "SELECT count(id) FROM user WHERE username = ? " + "AND password = ?";
+String sql = "INSERT INTO user VALUES(null,?,?)";
 Connection connection = null;
 PreparedStatement statement = null;
-ResultSet resultSet = null;
 try {
 	Class.forName("com.mysql.jdbc.Driver");
 	String url = "jdbc:mysql:///login";
@@ -29,30 +28,12 @@ try {
 	statement.setString(1, username);
 	statement.setString(2, password);
 	
-	resultSet = statement.executeQuery();
-	
-	
-	
-	if(resultSet.next()) {
-		int count = resultSet.getInt(1);
-		
-		if(count > 0) {
-			out.print("Hello: " + username);
-		}else {
-			out.print("Sorry: " + username);
-		}
-	}
-	
+	statement.executeUpdate();
+	out.println("恭喜你成功注册！！");	
 } catch (Exception e) {
 	e.printStackTrace();
 } finally {
-	try {
-		if(resultSet != null) {
-			resultSet.close();
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
+
 	try {
 		if(statement != null) {
 			statement.close();
