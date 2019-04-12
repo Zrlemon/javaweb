@@ -16,4 +16,22 @@
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ListALLStudentServlet</servlet-name>
+    <servlet-class>cn.edu.swu.listALLStudentServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListALLStudentServlet</servlet-name>
+    <url-pattern>/listALLStudent</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>DeleteStudentServlet</servlet-name>
+    <servlet-class>cn.edu.swu.DeleteStudentServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteStudentServlet</servlet-name>
+    <url-pattern>/deleteStudent</url-pattern>
+  </servlet-mapping>
 </web-app>
