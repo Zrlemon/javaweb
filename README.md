@@ -42,7 +42,7 @@ This is for my javaweb class
 ## 第七周完成内容
 - 学习了MVC的相关课程
 - 实现了对数据库中内容的SELECT，DELETE等内容
-## 第七周完成内容
+## 第八周完成内容
 - 继续学习了MVC的相关课程
 - 完成了DAO层的实现以及多个请求对应一个servlet
 - 实现了模糊查询与删除操作
