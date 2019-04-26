@@ -11,6 +11,8 @@ public interface CustomerDAO {
 	public List<Customer> getALL();
 	
 	public void save(Customer customer);
+
+	public void update(Customer customer);	
 	
 	public Customer get(Integer id);
 	

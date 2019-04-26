@@ -8,8 +8,9 @@
 </head>
 <body>
 
-<h4>操作成功！</h4>
-<a href="index.jsp">返回</a>
+		success!!!!
+		<br>
+		<a href="listAllStudent">List All Student</a>
 
 </body>
 </html>

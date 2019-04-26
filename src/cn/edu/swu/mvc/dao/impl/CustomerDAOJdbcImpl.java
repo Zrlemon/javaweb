@@ -46,5 +46,11 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO{
 		String sql = "SELECT id,name,address,phone FROM customers WHERE name LIKE ? AND address LIKE ? AND phone LIKE ? ";
 		return getForList(sql, cc.getName(), cc.getAddress(), cc.getPhone());
 	}
+	public void update(Customer customer) {
+		String sql = "UPDATE customers SET name = ?,address = ?,phone = ?"
+				+ "WHERE id = ?";
+		update(sql,customer.getName(),customer.getAddress(),customer.getPhone(),customer.getId());
+		
+	}
 
 }

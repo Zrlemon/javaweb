@@ -1,7 +1,7 @@
 package cn.edu.swu.mvc.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -50,11 +50,40 @@ public class CustomerServlet extends HttpServlet {
 		}
 			
 		}
-	private void update(HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("update");
+
+	private void edit(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		String forwardPath = "/error.jsp";
+		String idstr = request.getParameter("id");
+		try {
+			Customer customer = customerDAO.get(Integer.parseInt(idstr));
+			if(customer!=null) {
+			forwardPath = "/updatecustomer.jsp";
+			request.setAttribute("customer",customer);
+			}
+		} catch (Exception e) {
+		}
+		request.getRequestDispatcher(forwardPath).forward(request, response);
 	}
-	private void edit(HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("edit");
+	private void update(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String oldName = request.getParameter("oldName");
+		
+		if(!oldName.equalsIgnoreCase(name)) {
+			long count = customerDAO.getCountWithName(name);
+			if(count > 0 ) {
+				request.setAttribute("message", "用户名" + name + "已经被占用，请重新选择");
+				request.getRequestDispatcher("/updatecustomer.jsp").forward(request, response);
+				return;
+			}}
+			Customer customer = new Customer(name, address, phone);
+			customer.setId(Integer.parseInt(id));
+			customerDAO.update(customer);
+			response.sendRedirect("query.do");
+					
+	
 	}
 	
 	private void query(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
@@ -70,7 +99,7 @@ public class CustomerServlet extends HttpServlet {
 		//2. 把Customer的集合放入request中
 		request.setAttribute("customers", customers);
 		// 3. 转发页面到index.jsp
-		request.getRequestDispatcher("/mvc.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 	private void delete(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String idstrString = request.getParameter("id");
@@ -84,8 +113,26 @@ public class CustomerServlet extends HttpServlet {
 		response.sendRedirect("query.do");
 	}
 	
-	private void addCustomer(HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("ADD");
+	private void addCustomer(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		//1.获取表单参数
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		//检验name是否已经被占用
+		long count = customerDAO.getCountWithName(name);
+		if(count > 0) {
+			request.setAttribute("massage","用户名" + name + "已经被占用。请重新选择！");
+			request.getRequestDispatcher("/newcustomer.jsp").forward(request, response);
+			return;
+		}
+		//2.把表单参数封装为一个Customer 对象customer
+		Customer customer = new Customer(name, address, phone);
+		//3.调用customerDAO的save方法
+		customerDAO.save(customer);
+		//4.重定向到success.jsp
+
+		response.sendRedirect("success.jsp");
+		
 	}
 	
 }
