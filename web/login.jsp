@@ -1,77 +1,63 @@
+<%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import = "java.io.*,java.sql.*,javax.servlet.*"%>
-
+    pageEncoding="UTF-8" session="false" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>login</title>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+	<link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+
 </head>
-<body>
+<body class="login-bg">
+   
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">admin管理登录</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form action="login" method="post" class="layui-form" >
+            <input name="name" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="pass" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
 
-<%
-String username = request.getParameter("username");
-String password = request.getParameter("password");
-String sql = "SELECT count(id) FROM user WHERE username = ? " + "AND password = ?";
-Connection connection = null;
-PreparedStatement statement = null;
-ResultSet resultSet = null;
-try {
-	Class.forName("com.mysql.jdbc.Driver");
-	String url = "jdbc:mysql:///login";
-	String user = "root";
-	String password2 = "zsl980328";
-	
-	connection = DriverManager.getConnection(url,user,password2);
-	
-	statement = connection.prepareStatement(sql);
-	statement.setString(1, username);
-	statement.setString(2, password);
-	
-	resultSet = statement.executeQuery();
-	
-	
-	
-	if(resultSet.next()) {
-		int count = resultSet.getInt(1);
-		
-		if(count > 0) {
-			out.print("Hello: " + username);
-		}else {
-			out.print("Sorry: " + username);
-		}
-	}
-	
-} catch (Exception e) {
-	e.printStackTrace();
-} finally {
-	try {
-		if(resultSet != null) {
-			resultSet.close();
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	try {
-		if(statement != null) {
-			statement.close();
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	try {
-		if(connection != null) {
-			connection.close();
-		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-}
+   <!--   <script>
+        $(function  () {
+            layui.use('form', function(){
+              var form = layui.form;
+              // layer.msg('玩命卖萌中', function(){
+              //   //关闭后的操作
+              //   });
+              //监听提交
+              form.on('submit(login)', function(data){
+                // alert(888)
+                layer.msg(JSON.stringify(data.field),function(){
+                    location.href='index.html'
+                });
+                return false;
+              });
+            });
+        })
 
+        
+    </script>
 
+    -->
+    <!-- 底部结束 -->
 
-
-%>
 </body>
 </html>
