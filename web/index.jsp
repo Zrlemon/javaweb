@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<%
+	<%--
 		Cookie[] cookies = request.getCookies();
 		boolean islogin = false;
 		for(Cookie cookie:cookies){
@@ -30,7 +30,7 @@
 		if(islogin==false){
    			 response.sendRedirect("login.jsp");
 			}
-	%>
+	--%>
 
     <!-- 顶部开始 -->
     <div class="container">

@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_1172596257234" version="2.4">
+ <context-param>
+    <param-name>userSessionKey</param-name>
+    <param-value>userSession</param-value>
+  </context-param>
+  <context-param>
+    <param-name>rediretPage</param-name>
+    <param-value>/login.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>uncheckedUrls</param-name>
+    <param-value>/login.jsp,/error.jsp</param-value>
+  </context-param>
+  <filter>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>cn.edu.swu.filter.login.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cn.edu.swu.servlet.LoginServlet</servlet-class>
