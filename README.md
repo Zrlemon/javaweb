@@ -20,6 +20,7 @@ This is for my javaweb class
 - 登陆密码：123456 
 ## 测试网址
 - 网址: [测试地址](http://39.108.81.240:8080/Filter/login1.jsp)
+- 修改权限：[权限修改](http://39.108.81.240:8080/Filter/authority-manager.jsp)
 - 用户名：AAA或者BBB
 ## 第一周完成内容
 - 服务器环境的搭建
