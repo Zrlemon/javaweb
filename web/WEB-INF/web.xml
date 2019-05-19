@@ -47,12 +47,4 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>AuthorityServlet</servlet-name>
-    <servlet-class>cn.edu.swu.AuthorityServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AuthorityServlet</servlet-name>
-    <url-pattern>/authorityServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
