@@ -23,7 +23,7 @@
 	<target name="compile">
 		<javac	srcdir="${src.dir}" 
 				destdir="${build.dir}" 
-				target="1.8" debug="true" encoding="UTF-8" includeantruntime="false">
+				target="11" debug="true" encoding="UTF-8" includeantruntime="false">
 			<classpath  refid="classpath" />
 			<include name="**/*.java" />
 		</javac>
