@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_1172596257234" version="2.4">
- <context-param>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" metadata-complete="true" version="3.1">
+  <context-param>
     <param-name>userSessionKey</param-name>
     <param-value>userSession</param-value>
   </context-param>
@@ -35,7 +35,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>OutServlet</servlet-name>
-    <url-pattern>/loginout</url-pattern>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -46,5 +46,44 @@
   <servlet-mapping>
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>FileServlet</display-name>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>cn.edu.swu.fileupload.servlet.FileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>*.is</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+    <listener-class>
+      org.apache.commons.fileupload.servlet.FileCleanerCleanup
+    </listener-class>
+  </listener>
+  <listener>
+    <listener-class>cn.edu.swu.fileupload.listener.FileUploadAppListener</listener-class>
+  </listener>
+  <servlet>
+    <description></description>
+    <display-name>FileUploadServlet</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>cn.edu.swu.fileupload.servlet.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/fileuploadservlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadServlet</display-name>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>cn.edu.swu.download.servlet.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/downloadServlet</url-pattern>
   </servlet-mapping>
 </web-app>

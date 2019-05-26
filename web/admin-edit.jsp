@@ -25,7 +25,7 @@
   
   <body>
   	<%
-/*		Cookie[] cookies = request.getCookies();
+		/*Cookie[] cookies = request.getCookies();
 		boolean islogin = false;
 		for(Cookie cookie:cookies){
     		if(cookie.getName().equals("user")){

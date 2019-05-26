@@ -52,13 +52,13 @@
     <div class="x-body">
       <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so" action="query.do" method="post">
-          <input class="layui-input" placeholder="name" name="name" id="start">
-          <input class="layui-input" placeholder="phone" name="phone" id="end">
+          <input class="layui-input" placeholder="name" name="name" >
+          <input class="layui-input" placeholder="phone" name="phone">
           <input name="mail"  placeholder="mail" autocomplete="off" class="layui-input">
-          <input type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" value="query"></input>
+          <input type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" value="查询"></input>
         </form>
       </div>
-      <xblock>
+       <xblock>
         <!--  <button class="layui-btn" ><i class="layui-icon"></i>查询</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加用户','./admin-add.jsp')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>

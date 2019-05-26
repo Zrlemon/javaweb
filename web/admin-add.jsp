@@ -36,8 +36,9 @@
 			}*/
 	%>
 
- <%
+ 	<%
 		Object msg = request.getAttribute("massage");
+ 	//System.out.println(msg);
 		if(msg != null){
 	%>
 	<font color="red"><%= msg %></font>

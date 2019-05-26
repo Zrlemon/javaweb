@@ -54,10 +54,10 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
               <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="loginout">退出</a></dd>
+              <dd><a href="logout">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+          <li class="layui-nav-item to-index"><a href="index.jsp">前台首页</a></li>
         </ul>
         
     </div>
@@ -81,9 +81,9 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.jsp">
+                        <a _href="admin-add.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
+                            <cite>添加管理员</cite>
                         </a>
                     </li >
                     <li>
@@ -100,71 +100,18 @@
                     </li >
                 </ul>
             </li>
+           
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
-                    <cite>会员管理</cite>
+                    <i class="iconfont">&#xe6ab;</i>
+                    <cite>文件管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="member-list.jsp">
+                        <a _href="fileupload.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表</cite>
-                            
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员删除</cite>
-                            
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="xxx.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员列表</cite>
-                                    
-                                </a>
-                            </li >
-                            <li>
-                                <a _href="xx.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
-                                    
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="xx.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>等级管理</cite>
-                                    
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>订单管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="order-list.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表</cite>
+                            <cite>文件操作</cite>
                         </a>
                     </li >
                 </ul>
