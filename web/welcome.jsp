@@ -1,3 +1,4 @@
+<%@page import="cn.edu.swu.domain.Admin"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,7 +22,7 @@
 		String now = df.format(d);
 	%>
     <div class="x-body layui-anim layui-anim-up">
-        <blockquote class="layui-elem-quote">欢迎管理员：
+        <blockquote class="layui-elem-quote">欢迎用户：
             <span class="x-red">admin</span>当前时间:<%= now %></blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>

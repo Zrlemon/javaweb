@@ -1,6 +1,6 @@
 package cn.edu.swu.dao;
 import cn.edu.swu.db.*;
-import cn.edu.swu.domain.FileUploadBean;
+
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

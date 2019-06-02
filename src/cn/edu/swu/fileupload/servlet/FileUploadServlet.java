@@ -44,6 +44,7 @@ public class FileUploadServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String path = null;
+		//System.out.println("success");
 		
 		//获取 ServletFileUpload 对象. 
 		ServletFileUpload upload = getServletFileUpload();
@@ -75,15 +76,15 @@ public class FileUploadServlet extends HttpServlet {
 			//6. 删除临时文件夹的临时文件
 			FileUtils.delAllFile(TEMP_DIR);
 			
-			path = "/fileupload.jsp";
+			
+			path = request.getContextPath()+"/admin/fileupload.jsp";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			path = "/fileupload.jsp";
 			request.setAttribute("message", e.getMessage());
 		}
-		
-		request.getRequestDispatcher(path).forward(request, response);
+		response.sendRedirect(path);
+		//request.getRequestDispatcher(path).forward(request, response);
 	}
 
 	private void saveBeans(List<FileUploadBean> beans) {

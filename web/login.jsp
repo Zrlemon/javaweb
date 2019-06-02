@@ -22,7 +22,7 @@
 <body class="login-bg">
    
     <div class="login layui-anim layui-anim-up">
-        <div class="message">admin管理登录</div>
+        <div class="message">用户登录</div>
         <div id="darkbannerwrap"></div>
         
         <form action="login" method="post" class="layui-form" >

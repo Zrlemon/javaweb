@@ -35,7 +35,7 @@ public class FileServlet extends HttpServlet {
 			//获取ServletPath
 		String servletPath = request.getServletPath();
 		    //去除/和.do
-		String methodName = servletPath.substring(1);
+		String methodName = servletPath.substring(7);
 		methodName = methodName.substring(0, methodName.length()-3);
 		
 

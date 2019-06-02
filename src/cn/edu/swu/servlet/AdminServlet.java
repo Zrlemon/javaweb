@@ -35,8 +35,9 @@ public class AdminServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 			//获取ServletPath
 		String servletPath = request.getServletPath();
+		System.out.println(servletPath);
 		    //去除/和.do
-		String methodName = servletPath.substring(1);
+		String methodName = servletPath.substring(7);
 		methodName = methodName.substring(0, methodName.length()-3);
 		
 
@@ -50,6 +51,7 @@ public class AdminServlet extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
+			System.out.println(1);
 			response.sendRedirect("error.jsp");
 		}
 			
@@ -58,11 +60,13 @@ public class AdminServlet extends HttpServlet {
 	private void edit(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		String forwardPath = "/error.jsp";
 		String idstr = request.getParameter("id");
+		
 		try {
 			Admin admin = adminDAO.get(Integer.parseInt(idstr));
+			
 			//System.out.println(admin);
 			if(admin!=null) {
-			forwardPath = "/admin-edit.jsp";
+					forwardPath = "/admin/admin-edit.jsp";			
 			request.setAttribute("admin",admin);
 			}
 		} catch (Exception e) {
@@ -156,7 +160,7 @@ public class AdminServlet extends HttpServlet {
 		adminDAO.save(admin);
 		//System.out.println(admin);
 		//4.重定向到success.jsp
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("/admin/index.jsp");
 	}
 	
 }

@@ -31,11 +31,18 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			long cout = adminDAO.AdminLogin(name, pass);
+			String character = adminDAO.getcharacter(name, pass);
 			if( cout >0) {
 					session.setAttribute(application.getInitParameter("userSessionKey"), name);
-					resp.sendRedirect("index.jsp");
+					if(character.equals("超级管理员")) {
+						resp.sendRedirect(req.getContextPath()+"/admin/index.jsp");
+					}
+					else {
+						resp.sendRedirect(req.getContextPath()+"/users/index.jsp");
+					}	
 			}
 			else {
+				System.out.println("file");
 				resp.sendRedirect("loginfail.jsp");
 			}
 		} catch (Exception e) {

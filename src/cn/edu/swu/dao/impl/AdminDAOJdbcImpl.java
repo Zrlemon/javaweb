@@ -59,6 +59,12 @@ public class AdminDAOJdbcImpl extends DAO<Admin> implements AdminDAO{
 		String sql = "SELECT count(id) FROM admins WHERE name = ? AND pass = ?";
 		return getForValue(sql, name,pass);
 	}
+
+	@Override
+	public String getcharacter(String name, String pass) {
+		String sql = "SELECT characters FROM admins WHERE name = ? AND pass = ?";
+		return getForValue(sql, name,pass);
+	}
 	
 
 
