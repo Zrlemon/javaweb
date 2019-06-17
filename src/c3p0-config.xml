@@ -3,7 +3,7 @@
  
 
   <!-- This app is massive! -->
-  <named-config name="mvcapp"> 
+  <named-config name="MyDB"> 
     <property name="user">root</property>
     <property name="password">zsl980328</property>
     <property name="driverClass">com.mysql.cj.jdbc.Driver</property>

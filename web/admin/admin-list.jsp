@@ -58,11 +58,13 @@
           <input type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" value="查询"></input>
         </form>
       </div>
+      
        <xblock>
         <!--  <button class="layui-btn" ><i class="layui-icon"></i>查询</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加用户','${pageContext.request.contextPath}/admin/admin-add.jsp')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock>
+      </div>
       <% 
         	List<Admin> admins = (List<Admin>)request.getAttribute("admins");
 //      		System.out.println(admins);

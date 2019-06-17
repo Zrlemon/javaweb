@@ -1,3 +1,8 @@
+<%@page import="cn.edu.swu.domain.FileUploadBean"%>
+<%@page import="cn.edu.swu.dao.impl.UploadFileDao"%>
+<%@page import="cn.edu.swu.dao.FileDAO"%>
+<%@page import="cn.edu.swu.dao.impl.AdminDAOJdbcImpl"%>
+<%@page import="cn.edu.swu.dao.AdminDAO"%>
 <%@page import="cn.edu.swu.domain.Admin"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -20,6 +25,11 @@
 		Date d = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String now = df.format(d);
+		AdminDAO adminDao = new AdminDAOJdbcImpl();
+		long coutadmin = adminDao.getCountWithCharacter("超级管理员");
+		long coutuser = adminDao.getCountWithCharacter("普通用户");
+		FileDAO fileDAO = new UploadFileDao();
+		long coutfile = fileDAO.getCont("%%");
 	%>
     <div class="x-body layui-anim layui-anim-up">
         <blockquote class="layui-elem-quote">欢迎用户：
@@ -37,35 +47,29 @@
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>超级管理员数量</h3>
                                                 <p>
-                                                    <cite>2</cite></p>
+                                                    <cite><%=coutadmin %></cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>管理人员数量</h3>
-                                                <p>
-                                                    <cite>2</cite></p>
-                                            </a>
-                                        </li>
+                                        
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>普通用户数量</h3>
                                                 <p>
-                                                    <cite>1</cite></p>
+                                                    <cite><%=coutuser %></cite></p>
+                                            </a>
+                                        </li>
+                                             <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>当前在线总人数</h3>
+                                                <p>
+                                                    <cite>${applicationScope.count1}</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>文件数</h3>
                                                 <p>
-                                                    <cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
+                                                    <cite><%=coutfile %></cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
@@ -132,11 +136,11 @@
                             <th>服务器内存</th>
                             <td>1G</td></tr>
                         <tr>
-                            <th>上传附件限制</th>
-                            <td>2M</td></tr>
+                            <th>上传附件大小限制</th>
+                            <td>10M</td></tr>
                         <tr>
-                            <th>执行时间限制</th>
-                            <td>30s</td></tr>
+                            <th>上传文件格式限制</th>
+                            <td>pptx,docx,doc,txt</td></tr>
                         <tr>
                             <th>剩余空间</th>
                             <td>8601.2M</td></tr>
@@ -152,7 +156,7 @@
                         <tr>
                             <th>版权所有</th>
                             <td>
-                                <a href="39.108.81.240:8080/demo" class='x-a' target="_blank">访问官网</a></td>
+                                <a href="39.108.81.240:8080/myweb" class='x-a' target="_blank">访问官网</a></td>
                         </tr>
                         <tr>
                             <th>开发者</th>

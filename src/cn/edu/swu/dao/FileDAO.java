@@ -21,5 +21,8 @@ public interface FileDAO {
 	
 	public long getCountWithFileName(String file_name);
 	
+	public long getCont(String file_name);
+	
+	
 	
 }

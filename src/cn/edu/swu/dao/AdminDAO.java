@@ -23,5 +23,7 @@ public interface AdminDAO {
 	public long AdminLogin(String  name, String pass);
 	
 	public String getcharacter(String name,String pass);
+
+	long getCountWithCharacter(String character);
 	
 }

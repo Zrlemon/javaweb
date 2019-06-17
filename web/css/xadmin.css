@@ -100,6 +100,24 @@ body{
     outline:none;
     width:100%;
 }
+ .input-val {
+        width: 10px;
+        background: #ffffff;
+        height: 2.8rem;
+        padding: 0 2%;
+        border-radius: 5px;
+        border: none;
+        border: 1px solid rgba(0,0,0,.2);
+        font-size: 18px;
+    }
+  #canvas {
+        float: right;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
 .login hr {
     background: #fff url() 0 0 no-repeat;
 }

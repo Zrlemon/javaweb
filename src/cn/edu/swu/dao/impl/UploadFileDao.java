@@ -91,4 +91,11 @@ public class UploadFileDao extends DAO<FileUploadBean> implements FileDAO{
 		update(sql, id);
 		
 	}
+
+
+	@Override
+	public long getCont(String file_name) {
+		String sql = "SELECT count(id) FROM upload_files WHERE file_name like ?";
+		return getForValue(sql, file_name);
+	}
 }
