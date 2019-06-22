@@ -745,7 +745,7 @@ public abstract class FileUploadBase {
                             itemStream.close(true);
                             FileUploadException e =
                                 new FileSizeLimitExceededException(
-                                    name + " 文件大小超过 1 M",
+                                    name + " 文件大小超过 20 M",
                                     pCount, pSizeMax);
                             throw new FileUploadIOException(e);
                         }

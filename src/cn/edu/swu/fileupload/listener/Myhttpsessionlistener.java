@@ -29,7 +29,13 @@ public class Myhttpsessionlistener implements HttpSessionListener {
 		ServletContext c=session.getServletContext();
 		int count=(int) c.getAttribute("count1");
 		count--;
-		c.setAttribute("count1", count);
+		if (count<1) {
+			c.setAttribute("count1", 1);
+		}
+		else {
+			c.setAttribute("count1", count);
+		}
+		
 		//System.out.println("减少1");
 	}
 	

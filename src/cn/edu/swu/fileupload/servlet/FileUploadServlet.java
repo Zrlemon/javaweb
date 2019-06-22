@@ -11,18 +11,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import cn.edu.swu.dao.*;
 import cn.edu.swu.dao.impl.*;
 import cn.edu.swu.domain.*;
 import cn.edu.swu.fileupload.exception.InvalidExtNameException;
@@ -76,11 +71,12 @@ public class FileUploadServlet extends HttpServlet {
 			//6. 删除临时文件夹的临时文件
 			FileUtils.delAllFile(TEMP_DIR);
 			
-			
+			//path = "/admin/fileupload.jsp";
 			path = request.getContextPath()+"/admin/fileupload.jsp";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			path = request.getContextPath()+"/admin/fileupload.jsp";
 			request.setAttribute("message", e.getMessage());
 		}
 		response.sendRedirect(path);
@@ -175,12 +171,10 @@ public class FileUploadServlet extends HttpServlet {
 		
 		for(int i = 0; i < items.size(); i++){
 			FileItem item = items.get(i);
-			
 			if(item.isFormField()){
 				//desc1 或 desc2 ...
 				String fieldName = item.getFieldName();
 				String desc = item.getString("UTF-8");
-				
 				descs.put(fieldName, desc);
 			}
 		}
@@ -192,14 +186,13 @@ public class FileUploadServlet extends HttpServlet {
 				String fieldName = item.getFieldName();
 				String descName = "desc" + fieldName.substring(fieldName.length() - 1);
 				String desc = descs.get(descName); 
-				
+			
 				//对应文件名
 				String fileName = item.getName();
 				String filePath = getFilePath(desc,fileName);
 				
 				bean = new FileUploadBean(fileName, filePath, desc, null);
 				beans.add(bean);
-				
 				uploadFiles.put(bean.getFile_path(), item);
 			}			
 		}
@@ -220,6 +213,7 @@ public class FileUploadServlet extends HttpServlet {
 	private String getFilePath(String desc, String fileName) {
 		String extName = fileName.substring(fileName.lastIndexOf("."));
 		//Random random = new Random();
+
 		String [] tempname = desc.split("，|,| ",3);
 		String descName="";
 		for (int i = 0; i < tempname.length; i++) {

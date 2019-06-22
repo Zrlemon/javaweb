@@ -10,7 +10,7 @@
   </context-param>
   <context-param>
     <param-name>uncheckedUrls</param-name>
-    <param-value>/login.jsp,/error.jsp,/css,/regist.jsp</param-value>
+    <param-value>/login.jsp,/loginfail.jsp,/css,/regist.jsp</param-value>
   </context-param>
   <filter>
     <filter-name>loginFilter</filter-name>

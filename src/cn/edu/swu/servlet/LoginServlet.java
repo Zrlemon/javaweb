@@ -46,19 +46,23 @@ public class LoginServlet extends HttpServlet {
 					System.out.println("5");
 					if(character.equals("超级管理员")) {
 						System.out.println("6");
+						//path = "/admin/index.jsp";
 						path = req.getContextPath() + "/admin/index.jsp";	
 						System.out.println("7");
 					}
 					else {
 						System.out.println("8");
+						//path = "/users/index.jsp";
 						path = req.getContextPath() + "/users/index.jsp";	
 					}	
 			}
 			else {
-				//System.out.println("file");
 				System.out.println("9");
+				//req.setAttribute("message", "用户名或密码错误，请重新输入！");
+				//path = "/loginfail.jsp";
+				//req.getRequestDispatcher("/login.jsp").forward(req, resp);
 				path = req.getContextPath() + "/loginfail.jsp";
-				//resp.sendRedirect("loginfail.jsp");
+
 			}
 			System.out.println("10");
 			resp.sendRedirect(path);

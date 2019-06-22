@@ -95,19 +95,23 @@
         <%} %>
       </table>
       <%} %>
-      <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
+       <div class="page">
+ <div  id="test"></div>
       </div>
 
     </div>
     <script>
+  
+    layui.use('laypage', function(){
+      var laypage = layui.laypage;
+      
+      //执行一个laypage实例
+      laypage.render({
+        elem: 'test' //注意，这里的 test1 是 ID，不用加 # 号
+        ,count: 50 //数据总数，从服务端得到
+      });
+    });
+    
     layui.use('upload', function(){
     	  var upload = layui.upload;
     	   

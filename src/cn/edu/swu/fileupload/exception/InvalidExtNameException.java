@@ -9,5 +9,6 @@ public class InvalidExtNameException extends RuntimeException{
 
 	public InvalidExtNameException(String msg) {
 		super(msg);
+		System.out.println(msg);
 	}
 }

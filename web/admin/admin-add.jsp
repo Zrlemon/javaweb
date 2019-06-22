@@ -37,7 +37,7 @@
 	%>
 
  	<%
-		Object msg = request.getAttribute("massage");
+		Object msg = request.getAttribute("message");
  	//System.out.println(msg);
 		if(msg != null){
 	%>

@@ -43,9 +43,9 @@
          <input type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" value="搜索"></input>
         </form>
       </div>
-      <font color="red">${message }</font>
+      <font color="red">${message}</font>
       <xblock>
-            <form action="../fileuploadservlet" method="post" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/fileuploadservlet" method="post" enctype="multipart/form-data">
             <input type="file" name="file1"/>
       <!--  <button type="button" class="layui-btn" id="test1"><i class="layui-icon">&#xe67c;</i>上传文件</button>-->
      <input class="layui-input" type="text" name="desc1" placeholder="请输入学号，姓名，实验几,用逗号隔开" >
@@ -98,70 +98,22 @@
       </table>
       <%} %>
       <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
+ <div  id="test"></div>
       </div>
 
     </div>
     <script>
-    function member_del(obj,id){
-        layer.confirm('确认要删除吗？',function(index){
-        	//document.getElementById("delete").action="delete.do"
-          //document.getElementById("delete").submit();
-        	window.location.href="delete.do" + '?id='+id;
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
-        });
-    }
-    layui.use('upload', function(){
-    	  var upload = layui.upload;
-    	   
-    	  //执行实例
-    	  var uploadInst = upload.render({
-    	    elem: '#test1' //绑定元素
-    	    ,url: '/upload/' //上传接口
-    	    ,done: function(res){
-    	      //上传完毕回调
-    	    }
-    	    ,error: function(){
-    	      //请求异常回调
-    	    }
-    	  });
-    	});
-
-
-       /*用户-停用*/
-      function member_stop(obj,id){
-          layer.confirm('确认要停用吗？',function(index){
-
-              if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-              }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-              }
-              
-          });
-      }
+  
+    layui.use('laypage', function(){
+      var laypage = layui.laypage;
+      
+      //执行一个laypage实例
+      laypage.render({
+        elem: 'test' //注意，这里的 test1 是 ID，不用加 # 号
+        ,count: 50 //数据总数，从服务端得到
+      });
+    });
     </script>
-
   </body>
 
 </html>
